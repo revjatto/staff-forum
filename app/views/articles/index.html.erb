@@ -1,2 +1,10 @@
-<h1>Create a New Article</h1>
+<h3>List of Articles</h3>
 
+<% @articles.each do |article| %>
+
+<h3><%= link_to article.title , article %></h3>
+<p><%= truncate(article.body, length: 50) %></p>
+<% end %>
+
+<br/>
+<%= link_to 'New Article', new_article_path %>

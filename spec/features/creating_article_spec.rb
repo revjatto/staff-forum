@@ -13,7 +13,7 @@ fill_in "Body", with: "When Management visit your site, they need to sign your l
 click_button "Create Article"
 
 expect(page).to have_content("Article created successfully")
-expect(page.current_path).to eq(articles_path)
+expect(page.current_path).to eq(article_path)
  end
 
 end
