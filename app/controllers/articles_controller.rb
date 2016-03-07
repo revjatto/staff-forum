@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 before_action :set_article, only: [:show, :edit, :update, :destroy]
   def index
-  	@articles = Article.all
+      @articles = Article.all.order('created_at DESC')
   end
   
   def new
@@ -10,11 +10,12 @@ before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def create
   	@article = Article.new(article_params)
-  	if @article.save notice: "Article created successfully"
+  	if @article.save 
+        flash[:success] = "Article created successfully"
   	   redirect_to root_path
   	   
   	   else
-
+        flash.now[:danger] = "article was not created"
   	   render 'new'
      end	
   end
